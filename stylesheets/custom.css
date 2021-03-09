@@ -1,5 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 h1.header {
-  margin-bottom: 20px;
+  margin-bottom: 0px !important;
 }
 
 .school {
@@ -8,10 +12,6 @@ h1.header {
 
 .photo {
   margin-bottom: 10px;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 .toc {
