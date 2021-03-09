@@ -19,5 +19,18 @@ h1.header {
 }
 
 .section {
-  margin-bottom: 80px;
+  margin-bottom: 110px;
+}
+
+.emoji {
+  font-size: 50px;
+}
+
+.subheader {
+  color: black;
+}
+
+.subheader:hover {
+  color: #9453fa;
+  cursor: pointer;
 }

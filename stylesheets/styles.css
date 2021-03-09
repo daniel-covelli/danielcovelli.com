@@ -34,16 +34,20 @@ h3 {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 500;
 }
 
 h2 {
-  color: #393939;
+  font-size: 40px;
   font-weight: 500;
 }
 
-h3,
+h3 {
+  color: #393939;
+  font-weight: 500px;
+}
+
 h4,
 h5,
 h6 {
@@ -130,7 +134,7 @@ header {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
-/* header ul {
+header ul {
   list-style: none;
   height: 40px;
   padding: 0;
@@ -138,24 +142,24 @@ header {
   border-radius: 5px;
   border: 1px solid #e0e0e0;
   width: 270px;
-} */
+}
 
-/* header li {
+header li {
   width: 89px;
   float: left;
   border-right: 1px solid #e0e0e0;
   height: 40px;
-} */
+}
 
-/* header li:first-child a {
+header li:first-child a {
   border-radius: 5px 0 0 5px;
 }
 
 header li:last-child a {
   border-radius: 0 5px 5px 0;
-} */
+}
 
-/* header ul a {
+header ul a {
   line-height: 1;
   font-size: 11px;
   color: #999;
@@ -163,15 +167,15 @@ header li:last-child a {
   text-align: center;
   padding-top: 6px;
   height: 34px;
-} */
+}
 
-/* header ul a:hover {
+header ul a:hover {
   color: #999;
-} */
+}
 
-/* header ul a:active {
+header ul a:active {
   background-color: #f0f0f0;
-} */
+}
 
 strong {
   color: #222;
