@@ -19,7 +19,8 @@ h1.header {
 }
 
 .section {
-  margin-bottom: 110px;
+  padding-top: 20px;
+  margin-bottom: 100px;
 }
 
 .emoji {
@@ -33,4 +34,8 @@ h1.header {
 .subheader:hover {
   color: #9453fa;
   cursor: pointer;
+}
+
+.abis {
+  padding-bottom: 500px;
 }
