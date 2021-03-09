@@ -9,3 +9,15 @@ h1.header {
 .photo {
   margin-bottom: 10px;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+.toc {
+  margin-top: 100px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
