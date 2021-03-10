@@ -8,6 +8,10 @@ h5.header {
   margin-bottom: 10px !important;
 }
 
+.welcome {
+  padding-bottom: 30px;
+}
+
 .school {
   margin-bottom: 4px;
 }
@@ -22,7 +26,7 @@ h5.header {
 
 .section {
   padding-top: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .top {
