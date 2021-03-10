@@ -2,8 +2,9 @@ html {
   scroll-behavior: smooth;
 }
 
-h1.header {
-  margin-bottom: 0px !important;
+h1.header,
+h3.header {
+  margin-bottom: 10px !important;
 }
 
 .school {
@@ -15,7 +16,7 @@ h1.header {
 }
 
 .toc {
-  margin-top: 70px;
+  margin-top: 80px;
 }
 
 .section {
@@ -24,16 +25,18 @@ h1.header {
 }
 
 .emoji {
-  font-size: 50px;
+  margin-right: 20px;
 }
 
 .subheader {
-  color: black;
+  color: #595959;
+  margin-bottom: 70px;
 }
 
 .subheader:hover {
   color: #9453fa;
   cursor: pointer;
+  transition: 0.15s;
 }
 
 .abis {
