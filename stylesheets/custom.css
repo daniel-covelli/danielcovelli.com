@@ -38,22 +38,22 @@ h5.header {
 }
 
 .subheader-1 {
-  color: #9453fa;
+  color: #dbc9f8;
   /* margin-bottom: 0px; */
 }
 
 .subheader-2 {
-  color: #9453fa;
+  color: rgb(175, 175, 175);
   /* color: #fdb515; */
 }
 
 .subheader-3 {
-  color: #9453fa;
+  color: rgb(175, 175, 175);
   /* color: #3ecc77; */
 }
 
 .subheader-4 {
-  color: #9453fa;
+  color: rgb(175, 175, 175);
   /* color: #ff4337; */
 }
 
@@ -63,7 +63,7 @@ h5.header {
 .subheader-4:hover {
   color: #9453fa;
   cursor: pointer;
-  /* transition: 0.15s; */
+  transition: 0.15s;
 }
 
 .abis {
