@@ -3,7 +3,8 @@ html {
 }
 
 h1.header,
-h3.header {
+h3.header,
+h5.header {
   margin-bottom: 10px !important;
 }
 
@@ -21,24 +22,50 @@ h3.header {
 
 .section {
   padding-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
+}
+
+.top {
+  padding-top: 0 !important;
+}
+
+.item {
+  margin-bottom: 40px;
 }
 
 .emoji {
   margin-right: 20px;
 }
 
-.subheader {
-  color: #979797;
+.subheader-1 {
+  color: #9453fa;
   /* margin-bottom: 0px; */
 }
 
-.subheader:hover {
+.subheader-2 {
+  color: #9453fa;
+  /* color: #fdb515; */
+}
+
+.subheader-3 {
+  color: #9453fa;
+  /* color: #3ecc77; */
+}
+
+.subheader-4 {
+  color: #9453fa;
+  /* color: #ff4337; */
+}
+
+.subheader-1:hover,
+.subheader-2:hover,
+.subheader-3:hover,
+.subheader-4:hover {
   color: #9453fa;
   cursor: pointer;
-  transition: 0.15s;
+  /* transition: 0.15s; */
 }
 
 .abis {
-  padding-bottom: 500px;
+  padding-bottom: 1000px;
 }
