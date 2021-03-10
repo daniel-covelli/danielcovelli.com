@@ -22,7 +22,7 @@ h5.header {
 
 .section {
   padding-top: 20px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
 .top {
@@ -81,4 +81,9 @@ h5.header {
 .grid {
   overflow: hidden;
   margin-bottom: 10px;
+}
+
+.grid.special {
+  overflow: hidden;
+  margin-bottom: 0px !important;
 }
