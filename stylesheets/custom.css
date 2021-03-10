@@ -29,8 +29,8 @@ h3.header {
 }
 
 .subheader {
-  color: #595959;
-  margin-bottom: 70px;
+  color: #979797;
+  /* margin-bottom: 0px; */
 }
 
 .subheader:hover {
