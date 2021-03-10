@@ -69,3 +69,16 @@ h5.header {
 .abis {
   padding-bottom: 1000px;
 }
+
+.image {
+  max-height: 65px;
+  width: 65px;
+
+  float: left;
+  padding: 0 10px 10px 0;
+}
+
+.grid {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
