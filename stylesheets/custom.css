@@ -2,8 +2,8 @@ html {
   scroll-behavior: smooth;
 }
 
-.video,
 .photo,
+welcome,
 .subheader,
 h1.header,
 h3.header,
@@ -17,9 +17,9 @@ h5.header {
   border-color: rgb(175, 175, 175);
 }
 
-.welcome {
+/* .welcome {
   padding-bottom: 30px;
-}
+} */
 
 .school {
   margin-bottom: 4px;
@@ -31,11 +31,15 @@ h5.header {
 
 .section {
   padding-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
+}
+
+.special {
+  padding-top: 10px !important;
 }
 
 .item {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .emoji {
