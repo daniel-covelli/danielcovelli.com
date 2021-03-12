@@ -3,7 +3,6 @@ html {
 }
 
 .photo,
-welcome,
 .subheader,
 p.header,
 h1.header,
@@ -18,9 +17,9 @@ h5.header {
   border-color: rgb(175, 175, 175);
 }
 
-/* .welcome {
-  padding-bottom: 30px;
-} */
+.welcome {
+  padding-bottom: 20px;
+}
 
 .school {
   margin-bottom: 4px;
