@@ -56,7 +56,7 @@ permalink: /
         </ul> -->
       </header>
       <section id="top">
-        <div id="welcome" >
+        <div id="welcome" data-aos="fade-down">
           <h1 class="welcome">Welcome! 👋</h1>
     
           <p class="header">
@@ -270,7 +270,7 @@ permalink: /
         </div>
 
 
-        <div id="projects" class="section" data-aos="fade-up"  data-aos-delay="200">
+        <div id="projects" class="section" data-aos="fade-up"  >
           <!-- <h2 class="emoji">🙌</h2> -->
           <a href="#projects"><h3 class="subheader-4">Projects</h3></a>
           <div class="item">
@@ -344,7 +344,7 @@ permalink: /
             </p> -->
           </div>
         </div>
-        <div id="skills" class="section"  data-aos="fade-up">
+        <div id="skills" class="section" data-aos="fade-up">
           <!-- <h2 class="emoji">🙌</h2> -->
           <a href="#skills"><h3 class="subheader-4">Skills</h3></a>
           
@@ -475,7 +475,7 @@ permalink: /
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({once: true,  duration: 1000});
+      AOS.init({once: true,  duration: 1000, debounceDelay: 500, throttleDelay: 500});
     </script>
     <script>
       window.scrollTo(0,0);
