@@ -18,11 +18,11 @@ h5.header {
 }
 
 .welcome {
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 .school {
-  margin-bottom: 4px;
+  margin-bottom: 4psx;
 }
 
 .toc {
@@ -32,6 +32,10 @@ h5.header {
 .section {
   padding-top: 20px;
   margin-bottom: 40px;
+}
+
+.space {
+  margin-top: 30px;
 }
 
 .special {
@@ -76,7 +80,7 @@ h5.header {
 }
 
 .abis {
-  padding-bottom: 1000px;
+  padding-bottom: 500px;
 }
 
 .image {
