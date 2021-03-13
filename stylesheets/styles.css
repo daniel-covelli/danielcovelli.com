@@ -39,7 +39,7 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
 }
 
@@ -197,6 +197,7 @@ strong {
 } */
 
 header {
+  /* text-align: center; */
   width: 270px;
   float: left;
   position: fixed;
