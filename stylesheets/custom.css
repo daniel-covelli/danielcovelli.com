@@ -15,7 +15,8 @@ h5.header {
   margin-bottom: 20px;
 }
 
-.name {
+.name,
+.no-margin {
   margin-bottom: 0px !important;
 }
 
