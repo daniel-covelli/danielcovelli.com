@@ -21,6 +21,7 @@ h5.header {
 }
 
 .photo {
+  width: 200px;
   border-radius: 100%;
   box-shadow: 0px 1px 5px #888888;
 }
@@ -32,6 +33,7 @@ h5.header {
 }
 
 .welcome {
+  padding-top: 6px;
   padding-bottom: 15px;
 }
 
@@ -40,7 +42,17 @@ h5.header {
 }
 
 .toc {
-  margin-top: 80px;
+  margin: 40px 0 20px;
+}
+
+.toc-item {
+  color: #777;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.toc-item:hover {
+  color: #9453fa;
 }
 
 .section {

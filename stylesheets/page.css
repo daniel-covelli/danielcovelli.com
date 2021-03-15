@@ -1,0 +1,122 @@
+body {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: #595959;
+  font-weight: 400;
+}
+
+.right-nav {
+  padding: 20px 20px 0 20px;
+}
+.wrapper {
+  padding: 0 60px 0 30px;
+}
+
+.left,
+.middle,
+.right {
+  width: 100%;
+  float: left;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 1240px) {
+  /* source: https://stackoverflow.com/questions/16876264/how-to-make-a-three-column-page-with-two-fixed-side-columns */
+  .left {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: calc((100vw - 1140px) / 2);
+  }
+
+  .middle {
+    width: 590px;
+    margin-left: calc(250px + calc((100vw - 1140px) / 2));
+    height: 100%;
+  }
+
+  .right {
+    position: fixed;
+    width: 300px;
+    top: 0;
+    left: calc(250px + 590px + calc((100vw - 1140px) / 2));
+    height: 100%;
+  }
+
+  .left-alt {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1240px) and (min-width: 840px) {
+  /* source: https://stackoverflow.com/questions/16876264/how-to-make-a-three-column-page-with-two-fixed-side-columns */
+  .left {
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: calc((100vw - 840px) / 2);
+  }
+
+  .middle {
+    width: 590px;
+    margin-left: calc(250px + calc((100vw - 840px) / 2));
+    height: 100%;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .left-alt {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 840px) and (min-width: 600px) {
+  /* source: https://stackoverflow.com/questions/16876264/how-to-make-a-three-column-page-with-two-fixed-side-columns */
+  .left {
+    position: fixed;
+    width: 200px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    margin-left: calc((100vw - 600px) / 2);
+  }
+
+  .middle {
+    width: 400px;
+    margin-left: calc(200px + calc((100vw - 600px) / 2));
+    /* margin-right: calc(300px + 15%); */
+    height: 100%;
+  }
+
+  .right {
+    display: none;
+  }
+
+  .left-alt {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left {
+    display: none;
+  }
+
+  .left-alt {
+    padding-top: 40px;
+  }
+
+  .wrapper {
+    padding: 0 30px 0 30px;
+  }
+}
