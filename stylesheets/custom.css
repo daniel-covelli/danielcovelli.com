@@ -76,6 +76,16 @@ h5.header {
   margin-right: 20px;
 }
 
+.parent {
+  position: relative;
+  height: 500px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 .subheader-1 {
   color: #dbc9f8;
   /* margin-bottom: 0px; */
