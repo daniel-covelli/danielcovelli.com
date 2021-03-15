@@ -32,6 +32,67 @@ h5.header {
   border-color: rgb(175, 175, 175);
 }
 
+.bottom-fade {
+  width: 255px;
+  bottom: 20px;
+  height: 30px;
+  z-index: 1;
+  position: fixed;
+  background: linear-gradient(transparent, rgb(247, 247, 247));
+}
+
+.github-item-wrapper {
+  background-color: #d3d3d3;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.github-item-repo {
+  color: #555;
+  /* display: inline-block; */
+}
+
+.github-item-message {
+  padding: 0 0 7px 0;
+}
+
+.github-item-subrow {
+  padding: 2px 0 0 27px;
+}
+
+.github-item-repo:hover {
+  color: #9453fa;
+}
+
+.github-item-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  /* display: flex; */
+}
+
+.github-item-header {
+  background-color: #ffb1b1;
+  /* float: left; */
+}
+
+.github-item-time {
+  /* background-color: #b1e0ff; */
+  /* display: 50%; */
+  /* float: right; */
+}
+
+.github {
+  width: 260px;
+  /* padding-right: 10px; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 352px - 20px);
+  position: relative;
+}
+
 .welcome {
   padding-top: 6px;
   padding-bottom: 15px;

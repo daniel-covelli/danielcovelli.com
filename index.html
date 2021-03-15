@@ -597,30 +597,35 @@ permalink: /
       style="background-color: rgb(247, 247, 247); border-radius: 10px"
     >
       <nav class="right-nav">
-        <h3>
-          <a href="https://github.com/daniel-covelli" target="_blank"
-            >My Github  &nbsp;🚀</a
-          >
-        </h3>
-        <div class="toc">
-          <a href="#welcome">
-            <p class="toc-item">Welcome</p>
-          </a>
-          <a href="#education">
-            <p class="toc-item">Education</p>
-          </a>
-          <a href="#work">
-            <p class="toc-item">Work Experience</p>
-          </a>
-          <a href="#projects">
-            <p class="toc-item">Projects</p>
-          </a>
-          <a href="#skills">
-            <p class="toc-item">Skills & Interests</p>
-          </a>
+        <div>
+          <h3>
+            <a href="https://github.com/daniel-covelli" target="_blank"
+              >My Github  &nbsp;🚀</a
+            >
+          </h3>
+          <div class="toc">
+            <a href="#welcome">
+              <p class="toc-item">Welcome</p>
+            </a>
+            <a href="#education">
+              <p class="toc-item">Education</p>
+            </a>
+            <a href="#work">
+              <p class="toc-item">Work Experience</p>
+            </a>
+            <a href="#projects">
+              <p class="toc-item">Projects</p>
+            </a>
+            <a href="#skills">
+              <p class="toc-item">Skills & Interests</p>
+            </a>
+          </div>
+          <hr />
+          <h3 class="no-margin">My Github Commits</h3>
+          <h5>testing testing</h5>
         </div>
-        <hr />
-        <h3>Feature Coming Soon...</h3>
+        <div id="github" class="github"></div>
+        <!-- <div class="bottom-fade"></div> -->
       </nav>
     </aside>
 
@@ -647,9 +652,13 @@ permalink: /
         disable: 'phone'
       });
     </script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="javascripts/github.js"></script>
     <script>
       window.scrollTo(0, 0);
     </script>
+    <!-- TODO: test removing this -->
     <script src="javascripts/scale.fix.js"></script>
   </body>
 </html>
