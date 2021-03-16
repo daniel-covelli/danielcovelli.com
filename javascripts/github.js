@@ -44,6 +44,10 @@ const parsedGithubEvents = async () => {
     const data = await getGithubEvents();
 
     for (var i = 0; i < data.length; i++) {
+      if (i == 15) {
+        document.getElementById('spinner').remove();
+        div.style.visibility = 'visible';
+      }
       switch (data[i].type) {
         case 'PushEvent':
           console.log('PUSH EVENT', data[i]);
