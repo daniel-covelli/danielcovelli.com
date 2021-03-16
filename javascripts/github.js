@@ -2,7 +2,8 @@ import {
   pushEventDataRich,
   pushEventPoorCommit,
   forbiddenError,
-  createEvent
+  createEvent,
+  createEventType
 } from './components.js';
 
 const BASE_URL = 'https://api.github.com/';
@@ -62,10 +63,29 @@ const parsedGithubEvents = async () => {
           }
           break;
         case 'CreateEvent':
-          console.log('CREATE EVENT', data[i]);
-          createEvent(div, data[i]);
+          switch (data[i].payload.ref_type) {
+            case createEventType.BRANCH:
+              createEvent(div, data[i], createEventType.BRANCH);
+              console.log('THIS IS A NEW BRANCH');
+              console.log('CREATE EVENT', data[i]);
+              break;
+            case createEventType.REPO:
+              createEvent(div, data[i], createEventType.REPO);
+              console.log('THIS IS A NEW REPOSITORY');
+              console.log('CREATE EVENT', data[i]);
+              break;
+            default:
+              console.log('THIS IS UNKNOWN');
+              console.log('CREATE EVENT', data[i]);
+          }
+
+          break;
+        case 'PullRequestEvent':
+          console.log('OTHER UNCAPTURED EVENT', data[i]);
+          div.innerHTML += '<h4>Pull Request Event</h4>';
           break;
         default:
+          console.log('OTHER UNCAPTURED EVENT', data[i]);
           div.innerHTML += '<h4>no commits or create</h4>';
       }
     }

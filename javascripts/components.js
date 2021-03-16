@@ -2,6 +2,11 @@ import { truncate, splitRepoName } from './helper.js';
 
 const GITHUB_URL = 'https://github.com/';
 
+const createEventType = {
+  REPO: 'repository',
+  BRANCH: 'branch'
+};
+
 const pushEventDataRich = (div, data_i, commit) => {
   let repoNameTruncated = truncate(splitRepoName(data_i.repo.name), 35);
 
@@ -110,11 +115,24 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
   div.innerHTML += html;
 };
 
-const createEvent = (div, data_i) => {
+const createEvent = (div, data_i, type) => {
+  let repoURL;
+  let createdType;
+  let createdMessage;
+
+  if (type == createEventType.BRANCH) {
+    createdType = createEventType.BRANCH;
+    repoURL = `${GITHUB_URL}${data_i.repo.name}/tree/${data_i.payload.ref}`;
+    createdMessage = truncate(`${data_i.payload.ref}`, 30);
+  } else {
+    createdType = 'repo';
+    repoURL = `${GITHUB_URL}${data_i.repo.name}`;
+    createdMessage = 'New Repository Added';
+  }
+
   let repoNameTruncated = truncate(splitRepoName(data_i.repo.name), 35);
 
-  let repoURL = `${GITHUB_URL}${data_i.repo.name}`;
-  let repoID = data_i.repo.id;
+  let eventID = data_i.repo.id;
 
   let html = `
             <div class="github-item-wrapper">
@@ -125,11 +143,11 @@ const createEvent = (div, data_i) => {
                                 <a href="
                                     ${repoURL}
                                 " target="_blank">
-                                    repo
+                                    ${createdType}
                                 </a>  
                                 created 
                                 <span class="github-item-header-event-id">   
-                                    ${repoID}            
+                                    ${eventID}            
                                 </span>
                             </p>
                         </b>
@@ -143,7 +161,7 @@ const createEvent = (div, data_i) => {
                 </div>
                 <div class="github-item-subrow">
                     <div class="github-item-message">
-                        <i>New Repository Added</i>
+                        <i>${createdMessage}</i>
                     </div>
                     <div class="repo-wrapper">
                         <div class="repo-icon-wrapper">
@@ -160,7 +178,7 @@ const createEvent = (div, data_i) => {
                                 </small>
                             </a>
                         </div>
-                    </div>
+                    </>
                 </div>
             </div>`;
 
@@ -186,4 +204,10 @@ const forbiddenError = (div) => {
     `;
 };
 
-export { pushEventDataRich, pushEventPoorCommit, forbiddenError, createEvent };
+export {
+  pushEventDataRich,
+  pushEventPoorCommit,
+  forbiddenError,
+  createEvent,
+  createEventType
+};
