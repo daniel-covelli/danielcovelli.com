@@ -75,8 +75,8 @@ const parsedGithubEvents = async () => {
               console.log('NEW REPOSITORY', data[i]);
               break;
             default:
-              console.log('THIS IS UNKNOWN');
               console.log('UNKNOWN CREATE', data[i]);
+              div.innerHTML += '<h4>UNKNOWN CREATE</h4>';
           }
 
           break;
@@ -93,6 +93,7 @@ const parsedGithubEvents = async () => {
             default:
               console.log('THIS IS UNKNOWN');
               console.log('UNKNOWN PULL REQUEST', data[i]);
+              div.innerHTML += '<h4>UNKNOWN PULL REQUEST</h4>';
           }
           break;
         default:
