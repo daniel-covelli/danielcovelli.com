@@ -44,7 +44,7 @@ const parsedGithubEvents = async () => {
     const data = await getGithubEvents();
 
     for (var i = 0; i < data.length; i++) {
-      if (i == 15) {
+      if (i == 12) {
         document.getElementById('spinner').remove();
         div.style.visibility = 'visible';
       }
