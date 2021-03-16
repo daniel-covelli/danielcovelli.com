@@ -102,7 +102,7 @@ const pushEventDataRich = (div, data_i, commit) => {
                     </div>
                     <div class="github-item-time">
                         <small>
-                            ${moment(commit.commit.committer.date).fromNow()}
+                            ${moment(data_i.created_at).fromNow()}
                         </small>
                     </div>
                 </div>
