@@ -2,8 +2,11 @@ import {
   pushEventDataRich,
   pushEventPoorCommit,
   forbiddenError,
-  createEvent
+  createEvent,
+  pullRequestEvent
 } from './components.js';
+
+import { eventTypes, createEventType, pullReqEventType } from './enums.js';
 
 const BASE_URL = 'https://api.github.com/';
 const USER_NAME = 'daniel-covelli';
@@ -49,7 +52,7 @@ const parsedGithubEvents = async () => {
         div.style.visibility = 'visible';
       }
       switch (data[i].type) {
-        case 'PushEvent':
+        case eventTypes.PUSH:
           console.log('PUSH EVENT', data[i]);
           let commits = data[i].payload.commits;
           for (var j = 0; j < commits.length; j++) {
@@ -61,11 +64,40 @@ const parsedGithubEvents = async () => {
             }
           }
           break;
-        case 'CreateEvent':
-          console.log('CREATE EVENT', data[i]);
-          createEvent(div, data[i]);
+        case eventTypes.CREATE:
+          switch (data[i].payload.ref_type) {
+            case createEventType.BRANCH:
+              createEvent(div, data[i], createEventType.BRANCH);
+              console.log('NEW BRANCH', data[i]);
+              break;
+            case createEventType.REPO:
+              createEvent(div, data[i], createEventType.REPO);
+              console.log('NEW REPOSITORY', data[i]);
+              break;
+            default:
+              console.log('UNKNOWN CREATE', data[i]);
+              div.innerHTML += '<h4>UNKNOWN CREATE</h4>';
+          }
+
+          break;
+        case eventTypes.PULL_REQUEST:
+          switch (data[i].payload.action) {
+            case pullReqEventType.OPENED:
+              pullRequestEvent(div, data[i], pullReqEventType.OPENED);
+              console.log('OPEN PR', data[i]);
+              break;
+            case pullReqEventType.CLOSED:
+              pullRequestEvent(div, data[i], pullReqEventType.CLOSED);
+              console.log('CLOSED PR', data[i]);
+              break;
+            default:
+              console.log('THIS IS UNKNOWN');
+              console.log('UNKNOWN PULL REQUEST', data[i]);
+              div.innerHTML += '<h4>UNKNOWN PULL REQUEST</h4>';
+          }
           break;
         default:
+          console.log('OTHER UNCAPTURED EVENT', data[i]);
           div.innerHTML += '<h4>no commits or create</h4>';
       }
     }

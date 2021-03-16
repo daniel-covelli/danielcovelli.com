@@ -119,6 +119,15 @@ h5.header {
   float: left;
 }
 
+.repo-text {
+  width: 100%;
+}
+
+.repo-branch {
+  position: relative;
+  right: 0;
+}
+
 .repo-wrapper,
 .forbidden-wrapper {
   display: flex;
