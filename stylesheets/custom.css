@@ -264,6 +264,12 @@ h5.header {
   /* margin-left: 2px; */
 }
 
+.spinner {
+  height: 30px;
+  width: 30px;
+  padding-left: 110px;
+}
+
 .img:hover {
   /* -o-transition: 0.5s;
   -ms-transition: 0.5s;

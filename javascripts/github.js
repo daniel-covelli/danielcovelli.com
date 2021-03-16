@@ -37,6 +37,9 @@ const getCommit = async (url) => {
 
 const parsedGithubEvents = async () => {
   let div = document.getElementById('github');
+
+  div.style.visibility = 'hidden';
+
   try {
     const data = await getGithubEvents();
 
@@ -65,6 +68,9 @@ const parsedGithubEvents = async () => {
   } catch (e) {
     forbiddenError(div);
   }
+
+  document.getElementById('spinner').remove();
+  div.style.visibility = 'visible';
 };
 
 // ${data[i].repo.name.split('/')[1]}
