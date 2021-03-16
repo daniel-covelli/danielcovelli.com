@@ -98,10 +98,14 @@ h5.header {
 }
 
 .repo-icon {
-  height: 10px;
+  height: 100%;
   width: 10px;
   padding-right: 5px;
   display: block;
+}
+
+.repo-icon-wrapper {
+  height: 10px;
 }
 
 .repo-icon-wrapper,

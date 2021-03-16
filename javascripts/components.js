@@ -79,13 +79,15 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
                         <img src="../resources/icons8-book-52.png" class="repo-icon"/>
                     </div>
                     <div class="repo-text">
-                        <small>
-                            <b>
-                                <p class="github-item-repo-changed">
-                                    (repository name changed)
-                                </p>
-                            </b>
-                        </small>
+                        <a>
+                            <small>
+                                <b>
+                                    <p class="github-item-repo-changed no-margin">
+                                        (repository name changed)
+                                    </p>
+                                </b>
+                            </small>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -128,7 +130,7 @@ const createEvent = (div, data_i) => {
                             <a href="${repoURL}" target="_blank">
                                 <small>
                                     <b>
-                                        <p class="github-item-repo">
+                                        <p class="github-item-repo no-margin">
                                             ${repoNameTruncated}
                                         </p>
                                     </b>
