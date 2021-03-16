@@ -21,6 +21,18 @@ h5.header {
   margin-bottom: 0px !important;
 }
 
+.min-margin {
+  margin-bottom: 5px !important;
+}
+
+.med-margin {
+  margin-bottom: 35px !important;
+}
+
+.rl {
+  font-size: 12px !important;
+}
+
 .photo {
   width: 200px;
   border-radius: 100%;
@@ -54,11 +66,11 @@ h5.header {
 }
 
 .github-item-message {
-  padding: 0 0 10px 0;
+  padding: 0 0 7px 0;
 }
 
 .github-item-subrow {
-  padding: 2px 0 0 27px;
+  padding: 2px 0 0 0px;
 }
 
 .github-item-repo:hover {
@@ -83,6 +95,28 @@ h5.header {
   /* background-color: #b1e0ff; */
   /* display: 50%; */
   /* float: right; */
+}
+
+.forbidden-wrapper {
+  display: flex;
+}
+
+.forbidden-content,
+.forbidden-emoji {
+  float: left;
+  padding: 10px;
+}
+
+.forbidden-emoji {
+  padding-top: 25px;
+  width: 13%;
+  font-size: 40px;
+  /* background-color: #c0bfbf; */
+}
+
+.forbidden-content {
+  width: 65%;
+  /* background-color: #d3d3d3; */
 }
 
 .github {
