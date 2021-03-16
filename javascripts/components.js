@@ -1,10 +1,76 @@
 import { truncate, splitRepoName } from './helper.js';
+import { createEventType, pullReqEventType } from './enums.js';
 
 const GITHUB_URL = 'https://github.com/';
 
-const createEventType = {
-  REPO: 'repository',
-  BRANCH: 'branch'
+const pullRequestEvent = (div, data_i, type) => {
+  let pullReqType;
+  let pullReqDate;
+  if (type == pullReqEventType.OPENED) {
+    pullReqType = pullReqEventType.OPENED;
+    pullReqDate = data_i.payload.pull_request.created_at;
+  } else {
+    pullReqType = pullReqEventType.CLOSED;
+    pullReqDate = data_i.payload.pull_request.closed_at;
+  }
+
+  let pullRequestMessage;
+  if (data_i.payload.pull_request.body) {
+    pullRequestMessage = truncate(data_i.payload.pull_request.body, 30);
+  } else {
+    pullRequestMessage = truncate(data_i.payload.pull_request.title, 30);
+  }
+
+  let pullRequestId = data_i.payload.pull_request.id;
+  let pullRequestURL = data_i.payload.pull_request.html_url;
+  let pullRequestRepoName = data_i.payload.pull_request.base.repo.name;
+  let pullRequestRepoUrl = data_i.payload.pull_request.base.repo.html_url;
+
+  let html = `
+            <div class="github-item-wrapper">
+                <div class="github-item-row">
+                    <div class="github-item-header">
+                        <b>
+                            <p class="github-header">
+                                <a href="${pullRequestURL}" target="_blank"> pull request</a> 
+                                ${pullReqType}
+                                <span class="github-item-header-event-id">   
+                                    ${pullRequestId}           
+                                </span> 
+                            </p>
+                        </b>
+                    </div>
+                    <div class="github-item-time">
+                        <small>
+                            ${moment(pullReqDate).fromNow()}
+                        </small>
+                    </div>
+                </div>
+                <div class="github-item-subrow">
+                    <div class="github-item-message">
+                        <i>"${pullRequestMessage}"</i>
+                    </div>
+                    <div class="repo-wrapper">
+                        <div class="repo-icon-wrapper">
+                            <img src="../resources/icons8-book-52.png" class="repo-icon"/>
+                        </div>
+                        <div class="repo-text">
+                            <a href="${pullRequestRepoUrl}" target="_blank">
+                                <small>
+                                    <b>
+                                        <p class="github-item-repo no-margin">
+                                            ${pullRequestRepoName}
+                                        </p>
+                                    </b>
+                                </small>
+                            </a>
+                        </div>
+                    </div>     
+                </div>
+            </div> 
+            `;
+
+  div.innerHTML += html;
 };
 
 const pushEventDataRich = (div, data_i, commit) => {
@@ -16,16 +82,18 @@ const pushEventDataRich = (div, data_i, commit) => {
 
   let pushID = data_i.payload.push_id;
 
+  let branchName = data_i.payload;
+
   let html = `
             <div class="github-item-wrapper">
                 <div class="github-item-row">
                     <div class="github-item-header">
                         <b>
                             <p class="github-header">
-                            pushed 
                                 <a href="${
                                   commit.html_url
                                 }" target="_blank"> commit</a> 
+                                pushed 
                                 <span class="github-item-header-event-id">   
                                     ${pushID}           
                                 </span> 
@@ -76,7 +144,7 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
                 <div class="github-item-header">
                     <b> 
                         <p class="github-header"> 
-                            pushed commit 
+                            commit pushed 
                             <span class="github-item-header-event-id">   
                                 ${pushID}           
                             </span> 
@@ -209,5 +277,5 @@ export {
   pushEventPoorCommit,
   forbiddenError,
   createEvent,
-  createEventType
+  pullRequestEvent
 };
