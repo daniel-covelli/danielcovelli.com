@@ -9,16 +9,23 @@ const pushEventDataRich = (div, data_i, commit) => {
 
   let repoURL = `${GITHUB_URL}${data_i.repo.name}`;
 
+  let pushID = data_i.payload.push_id;
+
   let html = `
             <div class="github-item-wrapper">
                 <div class="github-item-row">
                     <div class="github-item-header">
-                        <h4 class="github-header">
-                          PushEvent -
-                            <a href="${
-                              commit.html_url
-                            }" target="_blank"> commit</a> 
-                        </h4>
+                        <b>
+                            <p class="github-header">
+                            pushed 
+                                <a href="${
+                                  commit.html_url
+                                }" target="_blank"> commit</a> 
+                                <span class="github-item-header-event-id">   
+                                    ${pushID}           
+                                </span> 
+                            </p>
+                        </b>
                     </div>
                     <div class="github-item-time">
                         <small>
@@ -56,13 +63,20 @@ const pushEventDataRich = (div, data_i, commit) => {
 const pushEventPoorCommit = (div, data_i, commits_j) => {
   let commitMessageTruncated = truncate(commits_j.message, 30);
 
+  let pushID = data_i.payload.push_id;
+
   let html = `
         <div class="github-item-wrapper">
             <div class="github-item-row">
                 <div class="github-item-header">
-                    <h4 class="github-header"> 
-                        PushEvent - commit 
-                    </h4>
+                    <b> 
+                        <p class="github-header"> 
+                            pushed commit 
+                            <span class="github-item-header-event-id">   
+                                ${pushID}           
+                            </span> 
+                        </p>
+                    </b>
                 </div>
                 <div class="github-item-time">
                     <small>
@@ -100,17 +114,26 @@ const createEvent = (div, data_i) => {
   let repoNameTruncated = truncate(splitRepoName(data_i.repo.name), 35);
 
   let repoURL = `${GITHUB_URL}${data_i.repo.name}`;
+  let repoID = data_i.repo.id;
 
   let html = `
             <div class="github-item-wrapper">
-                <div class="github-item-row">
-                    <div class="github-item-header">
-                        <h4 class="github-header">
-                          CreateEvent -
-                            <a href="
-                                ${repoURL}
-                            " target="_blank">created</a>  
-                        </h4>
+                <div class="github-item-row">  
+                    <div class="github-item-header"> 
+                        <b>
+                            <p class="github-header">
+                                <a href="
+                                    ${repoURL}
+                                " target="_blank">
+                                    repo
+                                </a>  
+                                created 
+                                <span class="github-item-header-event-id">   
+                                    ${repoID}            
+                                </span>
+                            </p>
+                        </b>
+                        
                     </div>
                     <div class="github-item-time">
                         <small>

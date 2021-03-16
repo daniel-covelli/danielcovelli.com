@@ -26,9 +26,7 @@ const getGithubEvents = async () => {
 const getCommit = async (url) => {
   try {
     const res = await axios.get(url);
-
-    // console.log(`COMMIT`, res);
-
+    console.log(`COMMIT`, res);
     return res.data;
   } catch (e) {
     console.error(e);
