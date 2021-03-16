@@ -31,7 +31,7 @@ const pushEventDataRich = (div, data_i, commit) => {
                     <a href="${GITHUB_URL}${data_i.repo.name}" target="_blank">
                         <small>
                             <b>
-                                <p class="github-item-repo">
+                                <p class="github-item-repo no-margin">
                                     🗂&nbsp;&nbsp; ${repoNameTruncated}
                                 </p>
                             </b>
