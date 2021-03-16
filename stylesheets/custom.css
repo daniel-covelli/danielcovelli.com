@@ -97,6 +97,19 @@ h5.header {
   /* float: right; */
 }
 
+.repo-icon {
+  height: 10px;
+  width: 10px;
+  padding-right: 5px;
+  display: block;
+}
+
+.repo-icon-wrapper,
+.repo-text {
+  float: left;
+}
+
+.repo-wrapper,
 .forbidden-wrapper {
   display: flex;
 }

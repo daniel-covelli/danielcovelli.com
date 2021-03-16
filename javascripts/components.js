@@ -7,6 +7,8 @@ const pushEventDataRich = (div, data_i, commit) => {
 
   let commitMessageTruncated = truncate(commit.commit.message, 30);
 
+  let repoURL = `${GITHUB_URL}${data_i.repo.name}`;
+
   let html = `
             <div class="github-item-wrapper">
                 <div class="github-item-row">
@@ -28,15 +30,22 @@ const pushEventDataRich = (div, data_i, commit) => {
                     <div class="github-item-message">
                         <i>"${commitMessageTruncated}"</i>
                     </div>
-                    <a href="${GITHUB_URL}${data_i.repo.name}" target="_blank">
-                        <small>
-                            <b>
-                                <p class="github-item-repo no-margin">
-                                    🗂&nbsp;&nbsp; ${repoNameTruncated}
-                                </p>
-                            </b>
-                        </small>
-                    </a>
+                    <div class="repo-wrapper">
+                        <div class="repo-icon-wrapper">
+                            <img src="../resources/icons8-book-52.png" class="repo-icon"/>
+                        </div>
+                        <div class="repo-text">
+                            <a href="${repoURL}" target="_blank">
+                                <small>
+                                    <b>
+                                        <p class="github-item-repo no-margin">
+                                            ${repoNameTruncated}
+                                        </p>
+                                    </b>
+                                </small>
+                            </a>
+                        </div>
+                    </div>     
                 </div>
             </div> 
             `;
@@ -65,13 +74,20 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
                 <div class="github-item-message">
                     <i>"${commitMessageTruncated}"</i>
                 </div>
-                <small>
-                    <b>
-                        <p class="github-item-repo-changed">
-                            🗂&nbsp;&nbsp; (repository name changed)
-                        </p>
-                    </b>
-                </small>
+                <div class="repo-wrapper">
+                    <div class="repo-icon-wrapper">
+                        <img src="../resources/icons8-book-52.png" class="repo-icon"/>
+                    </div>
+                    <div class="repo-text">
+                        <small>
+                            <b>
+                                <p class="github-item-repo-changed">
+                                    (repository name changed)
+                                </p>
+                            </b>
+                        </small>
+                    </div>
+                </div>
             </div>
         </div> `;
 
@@ -81,6 +97,8 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
 const createEvent = (div, data_i) => {
   let repoNameTruncated = truncate(splitRepoName(data_i.repo.name), 35);
 
+  let repoURL = `${GITHUB_URL}${data_i.repo.name}`;
+
   let html = `
             <div class="github-item-wrapper">
                 <div class="github-item-row">
@@ -88,7 +106,7 @@ const createEvent = (div, data_i) => {
                         <h4 class="github-header">
                           CreateEvent -
                             <a href="
-                                ${GITHUB_URL}${data_i.repo.name}
+                                ${repoURL}
                             " target="_blank">created</a>  
                         </h4>
                     </div>
@@ -102,15 +120,22 @@ const createEvent = (div, data_i) => {
                     <div class="github-item-message">
                         <i>New Repository Added</i>
                     </div>
-                    <a href="${GITHUB_URL}${data_i.repo.name}" target="_blank">
-                        <small>
-                            <b>
-                                <p class="github-item-repo">
-                                    🗂&nbsp;&nbsp; ${repoNameTruncated}
-                                </p>
-                            </b>
-                        </small>
-                    </a>
+                    <div class="repo-wrapper">
+                        <div class="repo-icon-wrapper">
+                            <img src="../resources/icons8-book-52.png" class="repo-icon"/>
+                        </div>
+                        <div class="repo-text">
+                            <a href="${repoURL}" target="_blank">
+                                <small>
+                                    <b>
+                                        <p class="github-item-repo">
+                                            ${repoNameTruncated}
+                                        </p>
+                                    </b>
+                                </small>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>`;
 
