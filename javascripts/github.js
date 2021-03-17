@@ -41,7 +41,7 @@ const getCommit = async (url) => {
 const parsedGithubEvents = async () => {
   let div = document.getElementById('github');
 
-  div.style.visibility = 'hidden';
+  div.style.opacity = 0;
 
   try {
     const data = await getGithubEvents();
@@ -49,7 +49,7 @@ const parsedGithubEvents = async () => {
     for (var i = 0; i < data.length; i++) {
       if (i == 12) {
         document.getElementById('spinner').remove();
-        div.style.visibility = 'visible';
+        div.style.opacity = 1;
       }
       switch (data[i].type) {
         case eventTypes.PUSH:
@@ -106,7 +106,7 @@ const parsedGithubEvents = async () => {
   }
 
   document.getElementById('spinner').remove();
-  div.style.visibility = 'visible';
+  div.style.opacity = 1;
 };
 
 // ${data[i].repo.name.split('/')[1]}
