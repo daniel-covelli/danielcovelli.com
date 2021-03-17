@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="viewport" content="width=device-width" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -492,6 +493,12 @@
                   src="https://www.cnjobs.dk/drupal/sites/default/files/2019-01/nodejs-01.png"
                 />
               </div>
+              <div title="Pandas" class="image">
+                <img
+                  class="img"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXCDD7q7wCVdRNtROzgtARnDThPmab6k2x7Q&usqp=CAU"
+                />
+              </div>
             </div>
             <h5 class="header">Proficient</h5>
             <div class="grid">
@@ -519,12 +526,6 @@
                   src="https://avatars.githubusercontent.com/u/320565?s=400&v=4"
                 />
               </div>
-              <div title="Pandas" class="image">
-                <img
-                  class="img"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXCDD7q7wCVdRNtROzgtARnDThPmab6k2x7Q&usqp=CAU"
-                />
-              </div>
               <div title="Matplotlib" class="image">
                 <img
                   class="img"
@@ -535,6 +536,12 @@
                 <img
                   class="img"
                   src="http://educationaltechnology.wooster.edu/wp-content/uploads/2018/09/plotly-logomark.png"
+                />
+              </div>
+              <div title="jQuery" class="image">
+                <img
+                  class="img"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlJEL4F-IqROVTyPGQAosbmqVPxYusr8TWgQ&usqp=CAU"
                 />
               </div>
             </div>
@@ -656,6 +663,29 @@
     <script type="module" src="javascripts/github.js"></script>
     <script>
       window.scrollTo(0, 0);
+    </script>
+    <script>
+      $('.github').on('scroll', function () {
+        console.log('GITHUB INNER HEIHGT', $('.github').innerHeight());
+        console.log(
+          'GITHUB SCROLLED + INNER  HEIGHT',
+          $(this).scrollTop() + $(this).innerHeight()
+        );
+        console.log(
+          'GITHUB SCROLL HEIGHT',
+          document.getElementById('github').scrollHeight
+        );
+        if (
+          $('.github').scrollTop() + $('.github').innerHeight() >=
+          document.getElementById('github').scrollHeight
+
+          // $('.github').offset().top +
+          //   $('.github').outerHeight() -
+          //   window.innerHeight
+        ) {
+          alert('You reached the end of the DIV');
+        }
+      });
     </script>
 
     <script src="javascripts/scale.fix.js"></script>

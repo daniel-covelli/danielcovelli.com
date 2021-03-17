@@ -91,14 +91,13 @@ const parsedGithubEvents = async () => {
               console.log('CLOSED PR', data[i]);
               break;
             default:
-              console.log('THIS IS UNKNOWN');
               console.log('UNKNOWN PULL REQUEST', data[i]);
               div.innerHTML += '<h4>UNKNOWN PULL REQUEST</h4>';
           }
           break;
         default:
           console.log('OTHER UNCAPTURED EVENT', data[i]);
-          div.innerHTML += '<h4>no commits or create</h4>';
+          div.innerHTML += '<h4>Oops ignore me</h4>';
       }
     }
   } catch (e) {
