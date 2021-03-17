@@ -153,7 +153,6 @@ h5.header {
 
 .github {
   width: 280px;
-  opacity: 0;
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 365px) !important;
@@ -286,8 +285,8 @@ h5.header {
   -ms-transition: 0.5s;
   -moz-transition: 0.2s;
   -webkit-transition: 0.2s; */
-  transition: 0.1s;
-  box-shadow: 1px 5px 10px #888888;
+  transition: 0.3s;
+  box-shadow: 1px 5px 8px #888888;
 }
 
 .grid {
