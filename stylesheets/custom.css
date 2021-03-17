@@ -123,10 +123,10 @@ h5.header {
   width: 100%;
 }
 
-.repo-branch {
+/* .repo-branch {
   position: relative;
   right: 0;
-}
+} */
 
 .repo-wrapper,
 .forbidden-wrapper {
