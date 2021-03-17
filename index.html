@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <meta name="viewport" content="width=device-width" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -514,6 +513,18 @@
                   src="https://pbs.twimg.com/profile_images/691206086955790336/CDMbA57p_400x400.png"
                 />
               </div>
+              <div title="jQuery" class="image">
+                <img
+                  class="img"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlJEL4F-IqROVTyPGQAosbmqVPxYusr8TWgQ&usqp=CAU"
+                />
+              </div>
+              <div title="Lodash" class="image">
+                <img
+                  class="img"
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Lodash.svg/1200px-Lodash.svg.png"
+                />
+              </div>
               <div title="Selenium" class="image">
                 <img
                   class="img"
@@ -536,12 +547,6 @@
                 <img
                   class="img"
                   src="http://educationaltechnology.wooster.edu/wp-content/uploads/2018/09/plotly-logomark.png"
-                />
-              </div>
-              <div title="jQuery" class="image">
-                <img
-                  class="img"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlJEL4F-IqROVTyPGQAosbmqVPxYusr8TWgQ&usqp=CAU"
                 />
               </div>
             </div>
@@ -620,20 +625,26 @@
           </a>
         </div>
         <hr />
-        <h3 class="no-margin med-margin">My Github Activity</h3>
+        <div>
+          <h3 class="github-activity-text med-margin">My Github Activity</h3>
+          <!-- <img
+            class="github-activity-icon"
+            height="25px"
+            width="25px"
+            src="resources/icons8-github-128.png"
+          /> -->
+        </div>
         <div id="spinner" class="spinner">
           <img
             src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
           />
         </div>
-        <div
-          id="github"
-          class="github"
-          onmouseover="document.body.style.overflow='hidden';"
-          onmouseout="document.body.style.overflow='auto';"
-        ></div>
+        <div id="github" class="github"></div>
       </nav>
     </aside>
+
+    <!-- onmouseover="document.body.style.overflow='hidden';"
+    onmouseout="document.body.style.overflow='auto';" -->
     <!-- <div class="bottom-fade"></div> -->
     <!-- <footer>
       <p>
@@ -664,29 +675,9 @@
     <script>
       window.scrollTo(0, 0);
     </script>
-    <script>
-      $('.github').on('scroll', function () {
-        console.log('GITHUB INNER HEIHGT', $('.github').innerHeight());
-        console.log(
-          'GITHUB SCROLLED + INNER  HEIGHT',
-          $(this).scrollTop() + $(this).innerHeight()
-        );
-        console.log(
-          'GITHUB SCROLL HEIGHT',
-          document.getElementById('github').scrollHeight
-        );
-        if (
-          $('.github').scrollTop() + $('.github').innerHeight() >=
-          document.getElementById('github').scrollHeight
-
-          // $('.github').offset().top +
-          //   $('.github').outerHeight() -
-          //   window.innerHeight
-        ) {
-          alert('You reached the end of the DIV');
-        }
-      });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script type="module" src="javascripts/jquery.js"></script>
 
     <script src="javascripts/scale.fix.js"></script>
   </body>

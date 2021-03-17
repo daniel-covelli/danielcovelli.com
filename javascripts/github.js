@@ -103,11 +103,20 @@ const parsedGithubEvents = async () => {
   } catch (e) {
     forbiddenError(div);
   }
-
+  div.innerHTML += `
+  <div id="spinner-pagination" class="spinner-pagination">
+    <img
+        src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+    />
+  </div>`;
   document.getElementById('spinner').remove();
   div.style.opacity = 1;
 };
 
-// ${data[i].repo.name.split('/')[1]}
+const paginatedGithubEvents = () => {
+  console.log('WE ARE NOW IN PAGINATED GITHUB EVENTS');
+};
 
 parsedGithubEvents();
+
+export { paginatedGithubEvents };
