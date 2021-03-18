@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.github.com/';
 const USER_NAME = 'daniel-covelli';
 
 /**
- * gets an array of the past 20 events on my github
+ * Gets an array of the past 20 events on my github.
  *
  * @param {number} pg current page number being requested
  * @param {number} GITHUB_EVENTS_PER_PAGE set to 20
@@ -24,7 +24,7 @@ const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
 };
 
 /**
- * gets rich data associated with github commit event
+ * Gets rich data associated with github commit event.
  *
  * @param {string} url for request
  * @see: https://docs.github.com/en/rest/reference/repos#get-a-commit
