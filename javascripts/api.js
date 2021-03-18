@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.github.com/';
 const USER_NAME = 'daniel-covelli';
 
 /**
- * Gets an array of the past 20 events on my github.
+ * Gets an array of 20 events on my github.
  *
  * @param {number} pg current page number being requested
  * @param {number} GITHUB_EVENTS_PER_PAGE set to 20
@@ -14,9 +14,7 @@ const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
     const res = await axios.get(`${BASE_URL}users/${USER_NAME}/events/public`, {
       params: { per_page: GITHUB_EVENTS_PER_PAGE, page: pg }
     });
-
-    console.log(`LIST OF EVENTS`, res.data);
-
+    // console.log(`LIST OF EVENTS`, res.data);
     return res.data;
   } catch (e) {
     console.error(e);
@@ -33,7 +31,7 @@ const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
 const getCommit = async (url) => {
   try {
     const res = await axios.get(url);
-    console.log(`COMMIT`, res);
+    // console.log(`COMMIT`, res);
     return res.data;
   } catch (e) {
     console.error(e);
