@@ -168,7 +168,7 @@ const pushEventPoorCommit = (div, data_i, commits_j) => {
                             <small>
                                 <b>
                                     <p class="github-item-repo-changed no-margin">
-                                        (repository name changed)
+                                        (repository deleted)
                                     </p>
                                 </b>
                             </small>
