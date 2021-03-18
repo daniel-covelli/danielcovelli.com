@@ -63,7 +63,9 @@ const parsedGithubEvents = async (pg = 1) => {
     console.log('PAGE', pg);
     return;
   }
-  div.style.opacity = 0;
+  if (pg == 1) {
+    div.style.opacity = 0;
+  }
 
   try {
     const data = await getGithubEvents(pg);
@@ -81,6 +83,7 @@ const parsedGithubEvents = async (pg = 1) => {
           spinnerExists.remove();
         }
         div.style.opacity = 1;
+      } else {
       }
       switch (data[i].type) {
         case eventTypes.PUSH:
