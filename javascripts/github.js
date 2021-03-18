@@ -5,85 +5,38 @@ import {
   createEvent,
   pullRequestEvent
 } from './components.js';
-
 import { eventTypes, createEventType, pullReqEventType } from './enums.js';
+import { getGithubEvents, getCommit } from './api.js';
 
-const BASE_URL = 'https://api.github.com/';
-const USER_NAME = 'daniel-covelli';
-const MAX_NUMBER_OF_PAGINATED_REQUESTS = 4;
+const GITHUB_EVENTS_PER_PAGE = 20;
+const OPTIMISTIC_RENDER_POINT = 12;
+const OPTIMISTIC_RENDER_POINT_ON_PAGINATION = 6;
+const MAX_NUMBER_OF_PAGINATED_REQUESTS = 5;
 
-let currentPageNumber = 1;
+const parsedGithubEvents = async (pg) => {
+  const div = document.getElementById('github');
 
-const getGithubEvents = async (pg = 1) => {
-  try {
-    // adddlert('FAKE 403');
-    const res = await axios.get(`${BASE_URL}users/${USER_NAME}/events/public`, {
-      params: { per_page: 20, page: pg }
-    });
-
-    console.log(`LIST OF EVENTS`, res.data);
-
-    return res.data;
-  } catch (e) {
-    console.error(e);
-  }
-
-  //  https://docs.github.com/en/rest/reference/activity#list-public-events-for-a-user
-};
-
-const getCommit = async (url) => {
-  try {
-    const res = await axios.get(url);
-    console.log(`COMMIT`, res);
-    return res.data;
-  } catch (e) {
-    console.error(e);
-  }
-
-  // https://docs.github.com/en/rest/reference/repos#get-a-commit
-};
-
-const parsedGithubEvents = async (pg = 1) => {
-  let div = document.getElementById('github');
-  const paginatedSpinnerExists = document.getElementById('spinner-pagination');
-  const spinnerExists = document.getElementById('spinner');
-
-  if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
-    if (paginatedSpinnerExists) {
-      paginatedSpinnerExists.remove();
-    }
-    div.innerHTML += `
-    <p style="padding-top: 20px;">
-        For more of my Github activity, checkout my 
-        <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
-    </p>`;
-    return;
-  }
   if (pg > MAX_NUMBER_OF_PAGINATED_REQUESTS) {
     console.log('PAGE', pg);
     return;
   }
-  if (pg == 1) {
-    div.style.opacity = 0;
-  }
+
+  // <div class="page-{pg}" id="page-{pg}"/>
+  const currentPageDiv = document.createElement('div');
+  currentPageDiv.setAttribute('class', `page-${pg}`);
+  currentPageDiv.setAttribute('id', `page-${pg}`);
 
   try {
-    const data = await getGithubEvents(pg);
+    const data = await getGithubEvents(pg, GITHUB_EVENTS_PER_PAGE);
 
     for (var i = 0; i < data.length; i++) {
-      if (i == 12) {
-        let paginatedSpinnerExists = document.getElementById(
-          'spinner-pagination'
-        );
-        if (paginatedSpinnerExists) {
-          paginatedSpinnerExists.remove();
-        }
-
-        if (spinnerExists) {
-          spinnerExists.remove();
-        }
-        div.style.opacity = 1;
-      } else {
+      if (pg > 1 && i == OPTIMISTIC_RENDER_POINT_ON_PAGINATION) {
+        document.getElementById(`spinner-pagination-${pg - 1}`).remove();
+        div.appendChild(currentPageDiv);
+      }
+      if (pg == 1 && i == OPTIMISTIC_RENDER_POINT) {
+        document.getElementById('spinner').remove();
+        div.appendChild(currentPageDiv);
       }
       switch (data[i].type) {
         case eventTypes.PUSH:
@@ -92,20 +45,24 @@ const parsedGithubEvents = async (pg = 1) => {
           for (var j = 0; j < commits.length; j++) {
             try {
               let commit = await getCommit(commits[j].url);
-              pushEventDataRich(div, data[i], commit);
+              pushEventDataRich(currentPageDiv, data[i], commit);
             } catch (e) {
-              pushEventPoorCommit(div, data[i], data[i].payload.commits[j]);
+              pushEventPoorCommit(
+                currentPageDiv,
+                data[i],
+                data[i].payload.commits[j]
+              );
             }
           }
           break;
         case eventTypes.CREATE:
           switch (data[i].payload.ref_type) {
             case createEventType.BRANCH:
-              createEvent(div, data[i], createEventType.BRANCH);
+              createEvent(currentPageDiv, data[i], createEventType.BRANCH);
               console.log('NEW BRANCH', data[i]);
               break;
             case createEventType.REPO:
-              createEvent(div, data[i], createEventType.REPO);
+              createEvent(currentPageDiv, data[i], createEventType.REPO);
               console.log('NEW REPOSITORY', data[i]);
               break;
             default:
@@ -117,11 +74,19 @@ const parsedGithubEvents = async (pg = 1) => {
         case eventTypes.PULL_REQUEST:
           switch (data[i].payload.action) {
             case pullReqEventType.OPENED:
-              pullRequestEvent(div, data[i], pullReqEventType.OPENED);
+              pullRequestEvent(
+                currentPageDiv,
+                data[i],
+                pullReqEventType.OPENED
+              );
               console.log('OPEN PR', data[i]);
               break;
             case pullReqEventType.CLOSED:
-              pullRequestEvent(div, data[i], pullReqEventType.CLOSED);
+              pullRequestEvent(
+                currentPageDiv,
+                data[i],
+                pullReqEventType.CLOSED
+              );
               console.log('CLOSED PR', data[i]);
               break;
             default:
@@ -134,27 +99,62 @@ const parsedGithubEvents = async (pg = 1) => {
           div.innerHTML += '<h4>Oops ignore me</h4>';
       }
     }
+
+    if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+      div.innerHTML += `
+        <p style="padding-top: 20px;">
+            For more Github activity, checkout my
+            <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
+        </p>`;
+    } else {
+      currentPageDiv.innerHTML += `
+        <div id="spinner-pagination-${pg}" class="spinner-pagination">
+            <img
+                src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+            />
+        </div>`;
+    }
   } catch (e) {
-    forbiddenError(div);
+    if (document.getElementById('spinner')) {
+      document.getElementById('spinner').remove();
+    }
+    if (currentPageDiv) {
+      currentPageDiv.remove();
+    }
+    forbiddenError(currentPageDiv);
   }
-  div.innerHTML += `
-  <div id="spinner-pagination" class="spinner-pagination">
-    <img
-        src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
-    />
-  </div>`;
-  if (spinnerExists) {
-    spinnerExists.remove();
-  }
-  div.style.opacity = 1;
 };
 
-const paginatedGithubEvents = () => {
-  currentPageNumber = currentPageNumber + 1;
-  parsedGithubEvents(currentPageNumber);
-  console.log('WE ARE NOW IN PAGINATED GITHUB EVENTS');
-};
+parsedGithubEvents(1);
 
-parsedGithubEvents(currentPageNumber);
+export { parsedGithubEvents };
 
-export { paginatedGithubEvents };
+//   const paginatedSpinnerExists = document.getElementById('spinner-pagination');
+//   const spinnerExists = document.getElementById('spinner');
+
+//   if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+//     if (paginatedSpinnerExists) {
+//       paginatedSpinnerExists.remove();
+//     }
+//     div.innerHTML += `
+//     <p style="padding-top: 20px;">
+//         For more of my Github activity, checkout my
+//         <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
+//     </p>`;
+//     return;
+//   }
+//   if (pg > MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+//     console.log('PAGE', pg);
+//     return;
+//   }
+//   if (pg == 1) {
+//     div.style.opacity = 0;
+//   }
+//
+// let paginatedSpinnerExists = document.getElementById(
+//   'spinner-pagination'
+// );
+// if (paginatedSpinnerExists) {
+//   paginatedSpinnerExists.remove();
+// }
+// div.style.opacity = 1;

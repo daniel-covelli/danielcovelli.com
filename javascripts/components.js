@@ -82,8 +82,6 @@ const pushEventDataRich = (div, data_i, commit) => {
 
   let pushID = data_i.payload.push_id;
 
-  let branchName = data_i.payload;
-
   let html = `
             <div class="github-item-wrapper">
                 <div class="github-item-row">
