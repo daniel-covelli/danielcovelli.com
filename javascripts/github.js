@@ -10,7 +10,7 @@ import { eventTypes, createEventType, pullReqEventType } from './enums.js';
 
 const BASE_URL = 'https://api.github.com/';
 const USER_NAME = 'daniel-covelli';
-const MAX_NUMBER_OF_PAGINATED_REQUESTS = 3;
+const MAX_NUMBER_OF_PAGINATED_REQUESTS = 4;
 
 let currentPageNumber = 1;
 
