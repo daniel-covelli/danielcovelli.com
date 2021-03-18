@@ -19,6 +19,7 @@ const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
 
 const getCommit = async (url) => {
   try {
+    adddlert('FAKE 403');
     const res = await axios.get(url);
     console.log(`COMMIT`, res);
     return res.data;

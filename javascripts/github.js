@@ -121,7 +121,7 @@ const parsedGithubEvents = async (pg) => {
     if (currentPageDiv) {
       currentPageDiv.remove();
     }
-    forbiddenError(currentPageDiv);
+    forbiddenError(div);
   }
 };
 
