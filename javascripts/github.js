@@ -55,9 +55,7 @@ const parsedGithubEvents = async (pg = 1) => {
     div.innerHTML += `
     <p style="padding-top: 20px;">
         For more of my Github activity, checkout my 
-        <a href="https://github.com/daniel-covelli" target="_blank">
-            profile
-        </a>.
+        <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
     </p>`;
     return;
   }
