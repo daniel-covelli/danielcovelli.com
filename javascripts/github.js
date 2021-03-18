@@ -10,11 +10,16 @@ import { eventTypes, createEventType, pullReqEventType } from './enums.js';
 
 const BASE_URL = 'https://api.github.com/';
 const USER_NAME = 'daniel-covelli';
+const MAX_NUMBER_OF_PAGINATED_REQUESTS = 3;
 
-const getGithubEvents = async () => {
+let currentPageNumber = 1;
+
+const getGithubEvents = async (pg = 1) => {
   try {
     // adddlert('FAKE 403');
-    const res = await axios.get(`${BASE_URL}users/${USER_NAME}/events/public`);
+    const res = await axios.get(`${BASE_URL}users/${USER_NAME}/events/public`, {
+      params: { per_page: 20, page: pg }
+    });
 
     console.log(`LIST OF EVENTS`, res.data);
 
@@ -38,17 +43,42 @@ const getCommit = async (url) => {
   // https://docs.github.com/en/rest/reference/repos#get-a-commit
 };
 
-const parsedGithubEvents = async () => {
+const parsedGithubEvents = async (pg = 1) => {
   let div = document.getElementById('github');
+  let paginatedSpinnerExists = document.getElementById('spinner-pagination');
+  let spinnerExists = document.getElementById('spinner');
 
+  if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+    if (paginatedSpinnerExists) {
+      paginatedSpinnerExists.remove();
+    }
+    div.innerHTML += `
+    <p style>
+        For more of my Github activity, checkout my 
+        <a href="https://github.com/daniel-covelli" target="_blank">
+            profile
+        </a>.
+    </p>`;
+    return;
+  }
+  if (pg > MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+    console.log('PAGE', pg);
+    return;
+  }
   div.style.opacity = 0;
 
   try {
-    const data = await getGithubEvents();
+    const data = await getGithubEvents(pg);
 
     for (var i = 0; i < data.length; i++) {
       if (i == 12) {
-        document.getElementById('spinner').remove();
+        if (paginatedSpinnerExists) {
+          paginatedSpinnerExists.remove();
+        }
+
+        if (spinnerExists) {
+          spinnerExists.remove();
+        }
         div.style.opacity = 1;
       }
       switch (data[i].type) {
@@ -109,14 +139,19 @@ const parsedGithubEvents = async () => {
         src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
     />
   </div>`;
-  document.getElementById('spinner').remove();
+  let spinnerExists = document.getElementById('spinner');
+  if (spinnerExists) {
+    spinnerExists.remove();
+  }
   div.style.opacity = 1;
 };
 
 const paginatedGithubEvents = () => {
+  currentPageNumber = currentPageNumber + 1;
+  parsedGithubEvents(currentPageNumber);
   console.log('WE ARE NOW IN PAGINATED GITHUB EVENTS');
 };
 
-parsedGithubEvents();
+parsedGithubEvents(currentPageNumber);
 
 export { paginatedGithubEvents };
