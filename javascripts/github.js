@@ -139,7 +139,6 @@ const parsedGithubEvents = async (pg = 1) => {
         src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
     />
   </div>`;
-  let spinnerExists = document.getElementById('spinner');
   if (spinnerExists) {
     spinnerExists.remove();
   }
