@@ -45,15 +45,15 @@ const getCommit = async (url) => {
 
 const parsedGithubEvents = async (pg = 1) => {
   let div = document.getElementById('github');
-  let paginatedSpinnerExists = document.getElementById('spinner-pagination');
-  let spinnerExists = document.getElementById('spinner');
+  const paginatedSpinnerExists = document.getElementById('spinner-pagination');
+  const spinnerExists = document.getElementById('spinner');
 
   if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
     if (paginatedSpinnerExists) {
       paginatedSpinnerExists.remove();
     }
     div.innerHTML += `
-    <p style>
+    <p style="padding-top: 20px;">
         For more of my Github activity, checkout my 
         <a href="https://github.com/daniel-covelli" target="_blank">
             profile
@@ -72,6 +72,9 @@ const parsedGithubEvents = async (pg = 1) => {
 
     for (var i = 0; i < data.length; i++) {
       if (i == 12) {
+        let paginatedSpinnerExists = document.getElementById(
+          'spinner-pagination'
+        );
         if (paginatedSpinnerExists) {
           paginatedSpinnerExists.remove();
         }
