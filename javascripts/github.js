@@ -128,33 +128,3 @@ const parsedGithubEvents = async (pg) => {
 parsedGithubEvents(1);
 
 export { parsedGithubEvents };
-
-//   const paginatedSpinnerExists = document.getElementById('spinner-pagination');
-//   const spinnerExists = document.getElementById('spinner');
-
-//   if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
-//     if (paginatedSpinnerExists) {
-//       paginatedSpinnerExists.remove();
-//     }
-//     div.innerHTML += `
-//     <p style="padding-top: 20px;">
-//         For more of my Github activity, checkout my
-//         <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
-//     </p>`;
-//     return;
-//   }
-//   if (pg > MAX_NUMBER_OF_PAGINATED_REQUESTS) {
-//     console.log('PAGE', pg);
-//     return;
-//   }
-//   if (pg == 1) {
-//     div.style.opacity = 0;
-//   }
-//
-// let paginatedSpinnerExists = document.getElementById(
-//   'spinner-pagination'
-// );
-// if (paginatedSpinnerExists) {
-//   paginatedSpinnerExists.remove();
-// }
-// div.style.opacity = 1;

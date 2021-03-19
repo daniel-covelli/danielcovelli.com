@@ -27,7 +27,6 @@ const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
  * @param {string} url for request
  * @see: https://docs.github.com/en/rest/reference/repos#get-a-commit
  */
-
 const getCommit = async (url) => {
   try {
     const res = await axios.get(url);
