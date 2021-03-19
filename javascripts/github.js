@@ -11,7 +11,7 @@ import { getGithubEvents, getCommit } from './api.js';
 const GITHUB_EVENTS_PER_PAGE = 20;
 const OPTIMISTIC_RENDER_POINT = 12;
 const OPTIMISTIC_RENDER_POINT_ON_PAGINATION = 6;
-const MAX_NUMBER_OF_PAGINATED_REQUESTS = 5;
+const MAX_NUMBER_OF_PAGINATED_REQUESTS = 3;
 
 const parsedGithubEvents = async (pg) => {
   const div = document.getElementById('github');
