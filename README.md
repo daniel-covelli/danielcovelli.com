@@ -2,7 +2,7 @@
 
 ### Setup
 
-Run jekyll server:
+Run build at 4000:
 
 > bundle exec jekyll serve
 
