@@ -1,6 +1,6 @@
 # danielcovelli.com
 
-####SetUp
+#### SetUp
 
 Run jekyll serve:
 
