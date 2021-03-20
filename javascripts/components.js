@@ -193,7 +193,11 @@ const createEvent = (div, data_i, type) => {
   } else {
     createdType = 'repo';
     repoURL = `${GITHUB_URL}${data_i.repo.name}`;
-    createdMessage = 'New Repository Added';
+    if (data_i.payload.description) {
+      createdMessage = truncate(`${data_i.payload.description}`, 30);
+    } else {
+      createdMessage = 'New Repository Added';
+    }
   }
 
   let repoNameTruncated = truncate(splitRepoName(data_i.repo.name), 35);
