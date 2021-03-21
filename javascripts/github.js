@@ -23,6 +23,8 @@ const parsedGithubEvents = async (pg) => {
 
   // <div class="page-{pg}" id="page-{pg}"/>
   const currentPageDiv = document.createElement('div');
+  currentPageDiv.style.opacity = 0;
+  currentPageDiv.style.transition = 'opacity 0.3s ease-out';
   currentPageDiv.setAttribute('class', `page-${pg}`);
   currentPageDiv.setAttribute('id', `page-${pg}`);
 
@@ -33,10 +35,14 @@ const parsedGithubEvents = async (pg) => {
       if (pg > 1 && i == OPTIMISTIC_RENDER_POINT_ON_PAGINATION) {
         document.getElementById(`spinner-pagination-${pg - 1}`).remove();
         div.appendChild(currentPageDiv);
+        window.getComputedStyle(currentPageDiv).opacity;
+        currentPageDiv.style.opacity = 1;
       }
       if (pg == 1 && i == OPTIMISTIC_RENDER_POINT) {
         document.getElementById('spinner').remove();
         div.appendChild(currentPageDiv);
+        window.getComputedStyle(currentPageDiv).opacity;
+        currentPageDiv.style.opacity = 1;
       }
       switch (data[i].type) {
         case eventTypes.PUSH:
