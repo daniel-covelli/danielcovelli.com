@@ -17,7 +17,6 @@ const parsedGithubEvents = async (pg) => {
   const div = document.getElementById('github');
 
   if (pg > MAX_NUMBER_OF_PAGINATED_REQUESTS) {
-    console.log('PAGE', pg);
     return;
   }
 
@@ -46,13 +45,13 @@ const parsedGithubEvents = async (pg) => {
       }
       switch (data[i].type) {
         case eventTypes.PUSH:
-          console.log('PUSH EVENT', data[i]);
           let commits = data[i].payload.commits;
           for (var j = 0; j < commits.length; j++) {
             try {
               let commit = await getCommit(commits[j].url);
               pushEventDataRich(currentPageDiv, data[i], commit);
             } catch (e) {
+              console.log('PUSH EVENT ERROR', e);
               pushEventPoorCommit(
                 currentPageDiv,
                 data[i],
@@ -65,14 +64,11 @@ const parsedGithubEvents = async (pg) => {
           switch (data[i].payload.ref_type) {
             case createEventType.BRANCH:
               createEvent(currentPageDiv, data[i], createEventType.BRANCH);
-              console.log('NEW BRANCH', data[i]);
               break;
             case createEventType.REPO:
               createEvent(currentPageDiv, data[i], createEventType.REPO);
-              console.log('NEW REPOSITORY', data[i]);
               break;
             default:
-              console.log('UNKNOWN CREATE', data[i]);
               div.innerHTML += '<h4>UNKNOWN CREATE</h4>';
           }
 
@@ -85,7 +81,6 @@ const parsedGithubEvents = async (pg) => {
                 data[i],
                 pullReqEventType.OPENED
               );
-              console.log('OPEN PR', data[i]);
               break;
             case pullReqEventType.CLOSED:
               pullRequestEvent(
@@ -93,15 +88,12 @@ const parsedGithubEvents = async (pg) => {
                 data[i],
                 pullReqEventType.CLOSED
               );
-              console.log('CLOSED PR', data[i]);
               break;
             default:
-              console.log('UNKNOWN PULL REQUEST', data[i]);
               div.innerHTML += '<h4>UNKNOWN PULL REQUEST</h4>';
           }
           break;
         default:
-          console.log('OTHER UNCAPTURED EVENT', data[i]);
           div.innerHTML += '<h4>Oops ignore me</h4>';
       }
     }
