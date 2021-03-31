@@ -109,7 +109,7 @@ const parsedGithubEvents = async (pg) => {
     if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
       div.innerHTML += `
         <p style="padding-top: 20px;">
-            For more Github activity, checkout my
+            For more Github of my activity, checkout my
             <a href="https://github.com/daniel-covelli" target="_blank">profile</a>.
         </p>`;
     } else {
