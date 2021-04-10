@@ -236,7 +236,13 @@ h5.header {
   width: 100%;
 }
 .subheader-1 {
-  color: #dbc9f8;
+
+ color: #9453fa;
+  text-shadow:.1px .1px 10px #e6d7ff, 1px 1px 25px #fff;
+
+ 
+}
+  
   /* margin-bottom: 0px; */
 }
 
