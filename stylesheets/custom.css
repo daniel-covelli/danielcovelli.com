@@ -240,25 +240,7 @@ h5.header {
   /* margin-bottom: 0px; */
 }
 
-.subheader-2 {
-  color: rgb(175, 175, 175);
-  /* color: #fdb515; */
-}
-
-.subheader-3 {
-  color: rgb(175, 175, 175);
-  /* color: #3ecc77; */
-}
-
-.subheader-4 {
-  color: rgb(175, 175, 175);
-  /* color: #ff4337; */
-}
-
-.subheader-1:hover,
-.subheader-2:hover,
-.subheader-3:hover,
-.subheader-4:hover {
+.subheader-1:hover {
   color: #9453fa;
   cursor: pointer;
   transition: 0.15s;
