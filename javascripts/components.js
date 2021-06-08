@@ -3,7 +3,67 @@ import { createEventType, pullReqEventType } from './enums.js';
 
 const GITHUB_URL = 'https://github.com/';
 
-const forkEvent = () => {};
+const forkEvent = (div, data_i, forkedRepoData) => {
+  const eventID = data_i.id;
+  const repoURL = forkedRepoData.html_url;
+  const forkeeURL = data_i.payload.forkee.html_url;
+  const forkeeNameTruncated = truncate(data_i.payload.forkee.full_name, 40);
+  const forkedName = truncate(forkedRepoData.full_name, 30);
+
+  let html = `
+            <div class="github-item-wrapper">
+                <div class="github-item-row">  
+                    <div class="github-item-header"> 
+                        <b>
+                            <p class="github-header">
+                                <a href="
+                                    ${forkeeURL}
+                                " target="_blank">
+                                    repo
+                                </a>  
+                                forked 
+                                <span class="github-item-header-event-id">   
+                                    ${eventID}            
+                                </span>
+                            </p>
+                        </b>
+                        
+                    </div>
+                    <div class="github-item-time">
+                        <small>
+                            ${moment(data_i.created_at).fromNow()}
+                        </small>
+                    </div>
+                </div>
+                <div class="github-item-subrow">
+                    <div class="github-item-message">
+                        <i>forked from 
+                            <a href="${repoURL}" target="_blank">
+                                ${forkedName}
+                            </a>
+                        </i>
+                    </div>
+                    <div class="repo-wrapper">
+                        <div class="repo-icon-wrapper">
+                            <img src="../resources/icons8-book-52.png" class="repo-icon"/>
+                        </div>
+                        <div class="repo-text">
+                            <a href="${forkeeURL}" target="_blank">
+                                <small>
+                                    <b>
+                                        <p class="github-item-repo no-margin">
+                                            ${forkeeNameTruncated}
+                                        </p>
+                                    </b>
+                                </small>
+                            </a>
+                        </div>
+                    </>
+                </div>
+            </div>`;
+
+  div.innerHTML += html;
+};
 
 const pullRequestEvent = (div, data_i, type) => {
   let pullReqType;
@@ -281,5 +341,6 @@ export {
   pushEventPoorCommit,
   forbiddenError,
   createEvent,
-  pullRequestEvent
+  pullRequestEvent,
+  forkEvent
 };
