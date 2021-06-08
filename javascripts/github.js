@@ -3,7 +3,8 @@ import {
   pushEventPoorCommit,
   forbiddenError,
   createEvent,
-  pullRequestEvent
+  pullRequestEvent,
+  forkEvent
 } from './components.js';
 import { eventTypes, createEventType, pullReqEventType } from './enums.js';
 import { getGithubEvents, getCommit } from './api.js';
@@ -71,7 +72,6 @@ const parsedGithubEvents = async (pg) => {
             default:
               div.innerHTML += '<h4>UNKNOWN CREATE</h4>';
           }
-
           break;
         case eventTypes.PULL_REQUEST:
           switch (data[i].payload.action) {
@@ -92,6 +92,9 @@ const parsedGithubEvents = async (pg) => {
             default:
               div.innerHTML += '<h4>UNKNOWN PULL REQUEST</h4>';
           }
+          break;
+        case eventTypes.FORK:
+          console.log('FORK DATA', data[i]);
           break;
         default:
           div.innerHTML += '<h4>Oops ignore me</h4>';

@@ -3,6 +3,8 @@ import { createEventType, pullReqEventType } from './enums.js';
 
 const GITHUB_URL = 'https://github.com/';
 
+const forkEvent = () => {};
+
 const pullRequestEvent = (div, data_i, type) => {
   let pullReqType;
   let pullReqDate;

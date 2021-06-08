@@ -11,7 +11,8 @@ const pullReqEventType = {
 const eventTypes = {
   PUSH: 'PushEvent',
   CREATE: 'CreateEvent',
-  PULL_REQUEST: 'PullRequestEvent'
+  PULL_REQUEST: 'PullRequestEvent',
+  FORK: 'ForkEvent'
 };
 
 export { eventTypes, createEventType, pullReqEventType };
