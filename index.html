@@ -12,12 +12,8 @@
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/styles.css" />
     <link rel="stylesheet" href="stylesheets/pygment_trac.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="stylesheets/animate.css" />
     <meta name="viewport" content="width=device-width" />
-
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
   <body>
     <aside class="left">
@@ -28,7 +24,7 @@
           title="Sleep Deprived Man"
           class="photo"
         />
-        <h2 class="name">Daniel Covelli</h2>
+        <h2 class="name" style="padding-bottom: 10px">Daniel Covelli</h2>
         <h5>
           Software Engineer &#8226; +2 years of experience &#8226; React,
           GraphQL, PostgreSQL, Docker
@@ -63,18 +59,17 @@
 
     <section class="middle">
       <div class="wrapper">
-        <div id="welcome" data-aos="fade-down">
+        <div id="welcome" class="animated fadeInDown">
           <h1 class="welcome">Welcome! 👋</h1>
-
-          <p class="header">
-            My name is Daniel and I am a self-taught software engineer.
-            At this time, I am <b>not</b> looking for roles, however feel free 
-            to checkout some of the cool work and personal projects that I've done in the past. 
-            If you have any questions or just want to connect, feel free to reach out!
+          <p class="header" style="padding-bottom: 10px">
+            My name is Daniel and I'm a self-taught software engineer. This
+            website contains info about my background including some of the cool
+            projects and teams that worked on. I have around 2 years of
+            experience working with modern software development tools, on
+            products ranging from social networks to fintech apps. I'm not
+            currently looking for roles at the moment, however feel free to
+            reach out if you have any questions!
           </p>
-          <p>- Dan</p> 
-          <br/>
-
           <div class="left-alt">
             <p>
               <b>
@@ -99,16 +94,10 @@
               >
             </div>
           </div>
-
           <hr class="space" />
         </div>
 
-        <div
-          id="education"
-          class="section special"
-          data-aos="fade-up"
-          data-aos-delay="800"
-        >
+        <div id="education" class="section special fadeInUp delay animated">
           <a href="#education"><h3 class="subheader-1">Education</h3></a>
           <h3 class="header">University of California, Berkeley</h3>
           <h5 class="header">
@@ -200,15 +189,27 @@
           </table>
         </div>
 
-        <div
-          id="work"
-          class="section"
-          data-aos="fade-up"
-          data-aos-anchor="#education"
-          data-aos-offset="0"
-          data-aos-delay="1000"
-        >
+        <div id="work" class="section">
           <a href="#work"><h3 class="subheader-1">Work Experience</h3></a>
+          <div class="item">
+            <h3 class="header">Software Engineer</h3>
+            <h5 class="header">
+              <a href="https://groundswell.io/" target="_blank">Groundswell</a>
+              | Jun 2021 - Current
+            </h5>
+            <p>
+              - First engineering hire. Established domain expertise over
+              finacial technology stack sharing insights directly with Chief
+              Product, Technology, and Executive officers
+              <br />- Helped build first Go microservices leveraging
+              technologies such as GraphQL, HTTP, gRPC, and postgres <br />-
+              Built and design approaches for query caching and local state
+              management in companies React-Native app leveraging GraphQL and
+              Apollo Client <br />- Collaborated directly with lead engineers
+              and Director of DevOps to help build, maintain, and deliver well
+              tested 12-factor applications
+            </p>
+          </div>
           <div class="item">
             <h3 class="header">Software Engineering Intern</h3>
             <h5 class="header">
@@ -303,34 +304,9 @@
             </p>
           </div>
         </div>
+
         <div id="projects" class="section">
           <a href="#projects"><h3 class="subheader-1">Projects</h3></a>
-          <!-- <div class="item">
-            <h3 class="header">Node.js the Right Way</h3>
-            <h5 class="header">
-              Practical, Server-Side JavaScript That Scales.
-            </h5>
-            <div class="subheader">
-              <a
-                href="https://github.com/daniel-covelli/node-the-right-way"
-                target="_blank"
-                >Github</a
-              >
-              &#8226;
-              <a
-                href="https://www.amazon.com/Node-js-Right-Way-Server-Side-JavaScript/dp/1937785734/ref=pd_lpo_14_img_0/138-1681595-3213751?_encoding=UTF8&pd_rd_i=1937785734&pd_rd_r=dcd61510-4ea9-4b62-b9ec-905b96db516f&pd_rd_w=zhrlF&pd_rd_wg=5iCkz&pf_rd_p=2eae1586-a44a-4b21-997a-1dfc1740e496&pf_rd_r=3V67Z554ZKD9Q8M4DKPB&psc=1&refRID=3V67Z554ZKD9Q8M4DKPB"
-                target="_blank"
-                >Amazon
-              </a>
-            </div>
-            <h4 class="med-margin">Project in progress...</h4>
-            <video class="video" width="100%" autoplay muted loop>
-              <source
-                src="./resources/a7dc2f46ea4c9e5c56685e69f432d37c.mp4"
-                type="video/mp4"
-              />
-            </video>
-          </div> -->
           <div class="item">
             <h3 class="header">NftyFeed</h3>
             <h5 class="header">
@@ -793,12 +769,6 @@
         <hr />
         <div>
           <h3 class="github-activity-text med-margin">My Github Activity</h3>
-          <!-- <img
-            class="github-activity-icon"
-            height="25px"
-            width="25px"
-            src="resources/icons8-github-128.png"
-          /> -->
         </div>
         <div id="spinner" class="spinner">
           <img
@@ -808,31 +778,6 @@
         <div id="github" class="github"></div>
       </nav>
     </aside>
-
-    <!-- <div class="bottom-fade"></div> -->
-    <!-- <footer>
-      <p>
-        This project is maintained by
-        <a href="http://github.com/orderedlist">Steve Smith</a>
-      </p>
-      <p>
-        <small
-          >Hosted on GitHub Pages &mdash; Theme by
-          <a href="https://github.com/orderedlist">orderedlist</a></small
-        >
-      </p>
-    </footer> -->
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        once: true,
-        duration: 1000,
-        debounceDelay: 500,
-        throttleDelay: 500,
-        disable: 'phone'
-      });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="module" src="javascripts/github.js"></script>

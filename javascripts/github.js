@@ -21,7 +21,6 @@ const parsedGithubEvents = async (pg) => {
     return;
   }
 
-  // <div class="page-{pg}" id="page-{pg}"/>
   const currentPageDiv = document.createElement('div');
   currentPageDiv.style.opacity = 0;
   currentPageDiv.style.transition = 'opacity 0.3s ease-out';
@@ -30,15 +29,17 @@ const parsedGithubEvents = async (pg) => {
 
   try {
     const data = await getGithubEvents(pg, GITHUB_EVENTS_PER_PAGE);
-
+    console.log('DATA', data);
     for (var i = 0; i < data.length; i++) {
-      if (pg > 1 && i == OPTIMISTIC_RENDER_POINT_ON_PAGINATION) {
+      console.log(i);
+
+      if (pg > 1 && i === OPTIMISTIC_RENDER_POINT_ON_PAGINATION) {
         document.getElementById(`spinner-pagination-${pg - 1}`).remove();
         div.appendChild(currentPageDiv);
         window.getComputedStyle(currentPageDiv).opacity;
         currentPageDiv.style.opacity = 1;
       }
-      if (pg == 1 && i == OPTIMISTIC_RENDER_POINT) {
+      if (pg === 1 && i === OPTIMISTIC_RENDER_POINT) {
         document.getElementById('spinner').remove();
         div.appendChild(currentPageDiv);
         window.getComputedStyle(currentPageDiv).opacity;
@@ -104,7 +105,18 @@ const parsedGithubEvents = async (pg) => {
       }
     }
 
-    if (pg == MAX_NUMBER_OF_PAGINATED_REQUESTS) {
+    if (pg === 1 && document.getElementById('spinner')) {
+      document.getElementById('spinner').remove();
+      div.appendChild(currentPageDiv);
+      window.getComputedStyle(currentPageDiv).opacity;
+      currentPageDiv.style.opacity = 1;
+    }
+
+    if (document.getElementById(`spinner-pagination-${pg - 1}`)) {
+      document.getElementById(`spinner-pagination-${pg - 1}`).remove();
+    }
+
+    if (pg === MAX_NUMBER_OF_PAGINATED_REQUESTS) {
       div.innerHTML += `
         <p style="padding-top: 20px;">
             For more of my Github activity, checkout my
