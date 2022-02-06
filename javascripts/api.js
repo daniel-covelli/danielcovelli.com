@@ -10,7 +10,6 @@ const USER_NAME = 'daniel-covelli';
  */
 const getGithubEvents = async (pg = 1, GITHUB_EVENTS_PER_PAGE) => {
   try {
-    // adddlert('FAKE 403');
     const res = await axios.get(`${BASE_URL}users/${USER_NAME}/events`, {
       params: { per_page: GITHUB_EVENTS_PER_PAGE, page: pg }
     });
