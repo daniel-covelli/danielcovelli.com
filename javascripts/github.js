@@ -100,6 +100,7 @@ const parsedGithubEvents = async (pg) => {
           console.log('FORKED REPO DATA', forkedRepoData);
           forkEvent(currentPageDiv, data[i], forkedRepoData);
           break;
+        // TODO: add comment event
       }
     }
 

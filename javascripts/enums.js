@@ -12,7 +12,8 @@ const eventTypes = {
   PUSH: 'PushEvent',
   CREATE: 'CreateEvent',
   PULL_REQUEST: 'PullRequestEvent',
-  FORK: 'ForkEvent'
+  FORK: 'ForkEvent',
+  COMMENT: "IssueCommentEvent"
 };
 
 export { eventTypes, createEventType, pullReqEventType };
