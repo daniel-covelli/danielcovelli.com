@@ -100,8 +100,6 @@ const parsedGithubEvents = async (pg) => {
           console.log('FORKED REPO DATA', forkedRepoData);
           forkEvent(currentPageDiv, data[i], forkedRepoData);
           break;
-        default:
-          div.innerHTML += '<h4>Oops ignore me</h4>';
       }
     }
 
